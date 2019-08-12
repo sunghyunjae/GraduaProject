@@ -1,7 +1,9 @@
+
 import java.sql.*;
 import java.util.*;
 
-public class HelloWorld {
+public class StudentBean {
+    public static void main(String[] args) {
         Connection conn = null;
         PreparedStatement pstmt = null;
 
@@ -21,7 +23,7 @@ public class HelloWorld {
             try {
                 Class.forName(jdbc_driver);
 
-                conn = DriverManager.getConnection(jdbc_url,user, password);
+                conn = DriverManager.getConnection(jdbc_url, user, password);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -44,3 +46,4 @@ public class HelloWorld {
             }
         }
     }
+}
