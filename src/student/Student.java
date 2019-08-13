@@ -1,3 +1,5 @@
+package student;
+
 public class Student {
     //멤버 변수 선언
     private String student_id;
