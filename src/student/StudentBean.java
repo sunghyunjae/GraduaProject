@@ -89,14 +89,14 @@ public class StudentBean {
             String sql = "insert into student(student_id, student_name, student_account, student_major, student_graduate, student_bus, student_domitory, student_pw) values(?,?,?,?,?,?,?,?)";
             try{
                 pstmt = conn.prepareStatement(sql);
-                pstmt.setString(1, student.getStudent_id);
-                pstmt.setString(2, student.getStudent_name);
-                pstmt.setString(3, student.getStudent_account);
-                pstmt.setString(4, student.getStudent_major);
-                pstmt.setString(5, student.getStudent_graduate);
-                pstmt.setString(6, student.getStudent_bus);
-                pstmt.setString(7, student.getStudent_domitory);
-                pstmt.setString(8, student.getStudent_pw);
+                pstmt.setString(1, student.getStudent_id());
+                pstmt.setString(2, student.getStudent_name());
+                pstmt.setString(3, student.getStudent_account());
+                pstmt.setString(4, student.getStudent_major());
+                pstmt.setString(5, student.getStudent_graduate());
+                pstmt.setString(6, student.getStudent_bus());
+                pstmt.setString(7, student.getStudent_domitory());
+                pstmt.setString(8, student.getStudent_pw());
                 pstmt.executeUpdate();
             } catch(SQLException e){
                 e.printStackTrace();
