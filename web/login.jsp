@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"  errorPage="error.jsp" import="student.Student.*, java.sql.*, java.util.*"%>
+         pageEncoding="UTF-8"  errorPage="error.jsp" import="student.*, java.sql.*, java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <% request.setCharacterEncoding("UTF-8"); %>
 <html>
@@ -33,11 +33,25 @@
     <br>
     <button> 로그인 </button>
     <br /> </form>
-    <br /> <button onClick="location.href='register.jsp'"> 회원가입 </button>
+    <%
+        }
+       else if(session.getAttribute("id").equals("admin")){
+           out.print("관리자 모드로 접속하셨습니다.");
+    %>
+    <h1> 로그인 페이지 </h1>
+    <br /> <form action="logout.jsp" method="post">
+    <br />
+    <br /> <button> 로그아웃 </button>
+    <br />
+    <br /> </form>
+    <br /> <button onClick="location.href='register.jsp'"> 학생 등록</button>
+    <br>
+    <br />
+    <br /><button onclick="location.href='main.jsp'"> 메인화면으로 이동</button>
     <%
     }
     // 현재 로그인된 아이디가 있다면 (= session에 저장된 id가 있다면)
-    else {
+    else  {
         out.print(session.getAttribute("id") + " 님 환영합니다");
     %>
     <h1> 로그인 페이지 </h1>
@@ -48,6 +62,8 @@
     <br /> </form>
     <br /> <button onClick="location.href='changeinfo.jsp'"> 개인정보 변경</button>
     <br>
+    <br />
+    <br /><button onclick="location.href='main.jsp'"> 메인화면으로 이동</button>
     <%
         }
     %>

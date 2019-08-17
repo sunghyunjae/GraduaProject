@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"  errorPage="error.jsp" import= "student.Student.*, java.sql.* , java.util.*" %>
+         pageEncoding="utf-8"  import= "student.*, java.sql.* , java.util.*" %>
 <%
     request.setCharacterEncoding("UTF-8");
 %>
@@ -23,33 +23,16 @@
     <%
         try {
             Connection conn = null;
+            PreparedStatement pstmt = null;
             // 드라이버 로딩
             String server = "localhost"; // MySQL 서버 주소
             String database = "student"; // MySQL DATABASE 이름
             String user_name = "root"; //  MySQL 서버 아이디
             String pw = "1897121"; // MySQL 서버 비밀번호
-            try{
-                Class.forName("com.mysql.jdbc.Driver");
-            }
-            catch (ClassNotFoundException e) {
-                System.err.println(" !! <JDBC 오류> Driver load 오류: " + e.getMessage());
-                e.printStackTrace();
-            }
 
+            Class.forName("com.mysql.jdbc.Driver");
             // 연결
-            // INSERT 해달라 student에
-            // id, pw, name, major 라는 필드를 가진
-            try {
                 conn = DriverManager.getConnection("jdbc:mysql://" + server + "/" + database + "?serverTimezone=UTC&useSSL=false", user_name, pw);
-                System.out.println("정상적으로 연결되었습니다.");
-            } catch(SQLException e) {
-                System.err.println("conn 오류:" + e.getMessage());
-                e.printStackTrace();
-            }
-
-            //관리자 계정
-            String super_id = "admin";
-            String super_pw = "admin";
 
             // sql 구사
             // 전 페이지인 login.jsp input에 입력한 값들을 변수에 담는다
@@ -60,14 +43,14 @@
                 session.setAttribute("id", user_id);
                 session.setAttribute("pw", user_pw);
                 // 첫 페이지로 돌려보낸다
-                response.sendRedirect("main.jsp");
+                response.sendRedirect("login.jsp");
             }
             // 내가 입력한 id와 pw 값이 DB안에 있는지 확인한다
             String sql = "SELECT * FROM student WHERE student_id=? AND student_pw=?";
-            PreparedStatement pmst = conn.prepareStatement(sql);
-            pmst.setString(1, user_id);
-            pmst.setString(2, user_pw);
-            ResultSet rs = pmst.executeQuery();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, user_id);
+            pstmt.setString(2, user_pw);
+            ResultSet rs = pstmt.executeQuery();
             // isLogin 은 로그인 확인 유무를 위한 변수
             Boolean isLogin = false;
             while(rs.next()) {
@@ -81,7 +64,8 @@
                 session.setAttribute("id", user_id);
                 session.setAttribute("pw", user_pw);
                 // 첫 페이지로 돌려보낸다
-                response.sendRedirect("main.jsp");
+                response.sendRedirect("login.jsp");
+                conn.close();
             } else {
                 // DB에 내가적은 정보가 없다면 경고창을 띄워준다
     %> <script> alert("로그인 실패"); history.go(-1); </script> <%
@@ -90,7 +74,8 @@
 
     } catch (Exception e) {
         out.println("DB 연동 실패");
-        response.sendRedirect("login.jsp");
+//        response.sendRedirect("login.jsp");
+  //      pageContext.forward("login.jsp");
     }
 %>
 </div>

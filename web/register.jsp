@@ -18,23 +18,42 @@
 </head>
 <body>
 <div align=center>
-    <h1> 회원가입 </h1>
-    <form action="registerCheck.jsp" method="post" onsubmit="return input_check_func()">
+    <h1> 학생 등록 </h1>
+    [<a href=control.jsp?action=main>메인화면으로</a>] <P>
+    <form action="control.jsp" method="post" onsubmit="return input_check_func()">
+        <input type=hidden name="action" value="insert">
         <table border="1">
             <tr>
-                <th> id </th> <td> <input id="student_id" name="student_id"> </td>
+                <th> id </th> <td> <input type="text" name="student_id"> </td>
             </tr>
             <tr>
-                <th> pw </th> <td> <input id="student_pw" name="student_pw"> </td>
+                <th> 이름 </th> <td> <input type="text" name="student_name"> </td>
             </tr>
             <tr>
-                <th> 이름 </th> <td> <input id="student_name" name="student_name"> </td>
+                <th> 계좌 </th> <td> <input type="text" name="student_account"> </td>
             </tr>
             <tr>
-                <th> 전공 </th> <td> <input id="student_major" name="student_major"> </td>
+                <th> 전공 </th> <td> <input type="text" name="student_major"> </td>
             </tr>
+            <tr>
+                <th> 졸업여부 </th> <td> <input type="text" name="student_graduate"> </td>
+            </tr>
+            <tr>
+                <th> 통학버스신청여부 </th> <td> <input type="text" name="student_bus"> </td>
+            </tr>
+            <tr>
+                <th> 기숙사신청여부 </th> <td> <input type="text" name="student_domitory"> </td>
+            </tr>
+            <tr>
+                <th> 이더리움주소 </th> <td> <input type="text" name="student_ethaddr"> </td>
+            </tr>
+            <tr>
+                <th> 비밀번호 </th> <td> <input type="text" name="student_pw"> </td>
+            </tr>
+        <tr>
+           <td colspan=2 align=center><input type=submit value="가입"><input type=reset value="취소"></td>
+        </tr>
         </table>
-        <button> 가입하기 </button>
     </form>
 
     <script>
@@ -44,10 +63,16 @@
             var id = document.getElementById('student_id').value;
             var pw = document.getElementById('student_pw').value;
             var name = document.getElementById('student_name').value;
-            var birth = document.getElementById('student_major').value;
+            var major = document.getElementById('student_major').value;
+            var account = document.getElementById('student_account').value;
+            var graduate = document.getElementById('student_graduate').value;
+            var bus = document.getElementById('student_bus').value;
+            var domitory = document.getElementById('student_domitory').value;
+            var ethaddr = document.getElementById('student_ethaddr').value;
 
-            if(id == null || pw == null || name == null || birth == null ||
-                id == ""   || pw == ""   || name == "" || birth == "") {
+            if(id == null || pw == null || name == null || major == null || account == null || graduate == null || bus == null || domitory == null || ethaddr == null ||
+                id == ""   || pw == ""   || name == "" || major == "" || account =="" || graduate == "" || bus =="" || domitory =="" || ethaddr == null) {
+
                 alert("공백은 허용치 않는다");
                 return false;
             } else {
