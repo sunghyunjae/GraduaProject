@@ -11,8 +11,8 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <jsp:useBean id="ab" class="student.StudentBean"/>
-<jsp:useBean id="Student" class="student.Student"/>
-<jsp:setProperty name="Student" property="*"/>
+<jsp:useBean id="student" class="student.Student"/>
+<jsp:setProperty name="student" property="*"/>
 <%
     // 컨트롤러 요청 파라미터
     String action = request.getParameter("action");
@@ -21,20 +21,21 @@
     // 개인정보 확인 요청인 경우
     if(action.equals("list")) {
         String id = (String)session.getAttribute("id");
-        Student student = ab.getDB(id);
-        request.setAttribute("student", student);
+        Student studentList = ab.getDB(id);
+        request.setAttribute("student", studentList);
         pageContext.forward("main.jsp");
     }
     // 학생 등록 요청인 경우
     else if(action.equals("insert")) {
-        if(ab.insertDB(Student)) {
-            System.out.println(Student.getStudent_name());
+
+        if(ab.insertDB(student)) {
+            System.out.println(student.getStudent_name());
             response.sendRedirect("control.jsp?action=list");
         }
         else
             pageContext.forward("register.jsp");
     }
-    // 주소록 수정 페이지 요청인 경우
+    // 학생 정보 수정 페이지 요청인 경우
     /*else if(action.equals("edit")) {
         Student student = ab.getDB(Student.getStudent_id());
         if(!request.getParameter("upasswd").equals("1234")) {
@@ -47,7 +48,7 @@
     }*/
     // 주소록 수정 등록 요청인 경우
     else if(action.equals("update")) {
-        if(ab.updateDB(Student)) {
+        if(ab.updateDB(student)) {
             response.sendRedirect("control.jsp?action=list");
         }
         else
@@ -56,7 +57,7 @@
     // 주소록 삭제 요청인 경우
     else if(action.equals("delete")) {
 
-        if(ab.deleteDB(Student.getStudent_id())) {
+        if(ab.deleteDB(student.getStudent_id())) {
             response.sendRedirect("control.jsp?action=list");
         }
         else

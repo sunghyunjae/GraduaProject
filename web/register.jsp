@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"  errorPage="error.jsp" import="student.Student.*, java.util.*"%>
+         pageEncoding="utf-8"  errorPage="error.jsp" import="student.*, java.util.*"%>
 <%
     request.setCharacterEncoding("UTF-8");
 %>
@@ -19,8 +19,9 @@
 <body>
 <div align=center>
     <h1> 학생 등록 </h1>
-    [<a href=control.jsp?action=main>메인화면으로</a>] <P>
-    <form action="control.jsp" method="post" onsubmit="return input_check_func()">
+    [<a href=control.jsp?action=main>메인화면으로</a>] <P></P>
+    [<a href=login.jsp>로그인 화면</a>] <P>
+    <form name=form1 action="control.jsp" method="post" onsubmit="return input_check_func()">
         <input type=hidden name="action" value="insert">
         <table border="1">
             <tr>
@@ -51,9 +52,10 @@
                 <th> 비밀번호 </th> <td> <input type="text" name="student_pw"> </td>
             </tr>
         <tr>
-           <td colspan=2 align=center><input type=submit value="가입"><input type=reset value="취소"></td>
+        <td colspan=2 align=center><input type=submit value="저장"></td>
         </tr>
         </table>
+
     </form>
 
     <script>
@@ -71,7 +73,7 @@
             var ethaddr = document.getElementById('student_ethaddr').value;
 
             if(id == null || pw == null || name == null || major == null || account == null || graduate == null || bus == null || domitory == null || ethaddr == null ||
-                id == ""   || pw == ""   || name == "" || major == "" || account =="" || graduate == "" || bus =="" || domitory =="" || ethaddr == null) {
+                id == ""   || pw == ""   || name == "" || major == "" || account =="" || graduate == "" || bus =="" || domitory =="" || ethaddr == "") {
 
                 alert("공백은 허용치 않는다");
                 return false;

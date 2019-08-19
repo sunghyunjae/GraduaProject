@@ -38,15 +38,9 @@
             // 전 페이지인 login.jsp input에 입력한 값들을 변수에 담는다
             String user_id= request.getParameter("input_id");
             String user_pw= request.getParameter("input_pw");
-            if(user_id.equals("admin") && user_pw.equals("admin"))
-            {
-                session.setAttribute("id", user_id);
-                session.setAttribute("pw", user_pw);
-                // 첫 페이지로 돌려보낸다
-                response.sendRedirect("login.jsp");
-            }
+
             // 내가 입력한 id와 pw 값이 DB안에 있는지 확인한다
-            String sql = "SELECT * FROM student WHERE student_id=? AND student_pw=?";
+           String sql = "SELECT * FROM student WHERE student_id=? AND student_pw=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, user_id);
             pstmt.setString(2, user_pw);
@@ -65,7 +59,10 @@
                 session.setAttribute("pw", user_pw);
                 // 첫 페이지로 돌려보낸다
                 response.sendRedirect("login.jsp");
-                conn.close();
+                try {
+                    if(conn != null)
+                        conn.close();
+                } catch (SQLException e) {}
             } else {
                 // DB에 내가적은 정보가 없다면 경고창을 띄워준다
     %> <script> alert("로그인 실패"); history.go(-1); </script> <%

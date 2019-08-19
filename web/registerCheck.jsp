@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"  errorPage="error.jsp" import="student.Student.*, java.util.*, java.sql.*" %>
+         pageEncoding="utf-8"  errorPage="error.jsp" import="student.*, java.util.*, java.sql.*" %>
 
 <%
     request.setCharacterEncoding("UTF-8");
