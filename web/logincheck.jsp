@@ -65,7 +65,7 @@
                 } catch (SQLException e) {}
             } else {
                 // DB에 내가적은 정보가 없다면 경고창을 띄워준다
-    %> <script> alert("로그인 실패"); history.go(-1); </script> <%
+    %> <script> alert("아이디나 비밀번호를 확인해주세요"); history.go(-1); </script> <%
         }
 
 

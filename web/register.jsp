@@ -19,42 +19,42 @@
 <body>
 <div align=center>
     <h1> 학생 등록 </h1>
-    [<a href=control.jsp?action=main>메인화면으로</a>] <P></P>
-    [<a href=login.jsp>로그인 화면</a>] <P>
     <form name=form1 action="control.jsp" method="post" onsubmit="return input_check_func()">
         <input type=hidden name="action" value="insert">
         <table border="1">
             <tr>
-                <th> id </th> <td> <input type="text" name="student_id"> </td>
+                <th> id </th> <td> <input id = "student_id" name="student_id"> </td>
             </tr>
             <tr>
-                <th> 이름 </th> <td> <input type="text" name="student_name"> </td>
+                <th> 이름 </th> <td> <input id = "student_name" name="student_name"> </td>
             </tr>
             <tr>
-                <th> 계좌 </th> <td> <input type="text" name="student_account"> </td>
+                <th> 계좌 </th> <td> <input id = "student_account" name="student_account"> </td>
             </tr>
             <tr>
-                <th> 전공 </th> <td> <input type="text" name="student_major"> </td>
+                <th> 전공 </th> <td> <input id = "student_major" name="student_major"> </td>
             </tr>
             <tr>
-                <th> 졸업여부 </th> <td> <input type="text" name="student_graduate"> </td>
+                <th> 졸업여부 </th> <td> <input id = "student_graduate" name="student_graduate"> </td>
             </tr>
             <tr>
-                <th> 통학버스신청여부 </th> <td> <input type="text" name="student_bus"> </td>
+                <th> 통학버스신청여부 </th> <td> <input id ="student_bus" name="student_bus"> </td>
             </tr>
             <tr>
-                <th> 기숙사신청여부 </th> <td> <input type="text" name="student_domitory"> </td>
+                <th> 기숙사신청여부 </th> <td> <input id ="student_domitory" name="student_domitory"> </td>
             </tr>
             <tr>
-                <th> 이더리움주소 </th> <td> <input type="text" name="student_ethaddr"> </td>
+                <th> 이더리움주소 </th> <td> <input id = "student_ethaddr" name="student_ethaddr"> </td>
             </tr>
             <tr>
-                <th> 비밀번호 </th> <td> <input type="text" name="student_pw"> </td>
+                <th> 비밀번호 </th> <td> <input id = "student_pw" name="student_pw"> </td>
             </tr>
         <tr>
-        <td colspan=2 align=center><input type=submit value="저장"></td>
+        <td colspan=2 align=center><input type=submit value="등록"></td>
         </tr>
         </table>
+        [<a href=control.jsp?action=main>메인화면으로</a>] <P></P>
+        [<a href=login.jsp>로그인 화면</a>] <P>
 
     </form>
 

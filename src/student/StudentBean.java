@@ -150,28 +150,6 @@ public class StudentBean {
         return student;
     }
 
-    public void showTransaction(){
-        BufferedReader in = null;
-
-        try{
-        URL obj = new URL("https://etherscan.io/token/0x2d3ea6dd9be22cf44170324975985ae5961bde73");
-        HttpURLConnection con = (HttpURLConnection)obj.openConnection();
-
-            con.setRequestMethod("GET");
-
-            in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
-
-            String line;
-            while((line = in.readLine()) != null) { // response를 차례대로 출력
-                System.out.println(line);
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        } finally {
-            if(in != null) try { in.close(); } catch(Exception e) { e.printStackTrace(); }
-        }
-
-    }
 
 }
 
