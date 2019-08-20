@@ -18,38 +18,21 @@
     String action = request.getParameter("action");
     // 파라미터에 따른 요청 처리
 
-    // 개인정보 확인 요청인 경우
-    if(action.equals("list")) {
-        String id = (String)session.getAttribute("id");
-        Student studentList = ab.getDB(id);
-        request.setAttribute("student", studentList);
-        pageContext.forward("main.jsp");
-    }
     // 학생 등록 요청인 경우
-    else if(action.equals("insert")) {
+     else if(action.equals("insert")) {
 
         if(ab.insertDB(student)) {
             System.out.println(student.getStudent_name());
-            response.sendRedirect("control.jsp?action=list");
+            response.sendRedirect("control.jsp?action=login");
         }
         else
             pageContext.forward("register.jsp");
     }
-    // 학생 정보 수정 페이지 요청인 경우
-    /*else if(action.equals("edit")) {
-        Student student = ab.getDB(Student.getStudent_id());
-        if(!request.getParameter("upasswd").equals("1234")) {
-            out.println("<script>alert('비밀번호가 틀렸습니다.!!');history.go(-1);</script>");
-        }
-        else {
-            request.setAttribute("ab",student);
-            pageContext.forward("changeinfo.jsp");
-        }
-    }*/
+
     // 개인정보 수정 요청인 경우
     else if(action.equals("update")) {
         if(ab.updateDB(student)) {
-            response.sendRedirect("control.jsp?action=list");
+            response.sendRedirect("control.jsp?action=login");
         }
         else
             throw new Exception("DB 갱신오류");
@@ -65,6 +48,9 @@
     }
     else if(action.equals("main")){
         pageContext.forward("main.jsp");
+    }
+    else if(action.equals("login")){
+        pageContext.forward("login.jsp");
     }
     else {
         out.println("<script>alert('action 파라미터를 확인해 주세요!!!')</script>");

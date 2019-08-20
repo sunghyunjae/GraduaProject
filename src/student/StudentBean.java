@@ -120,14 +120,13 @@ public class StudentBean {
     public Student getDB(String input_id) {
         connect();
 
-        String sql = "select * from student where student_id=?";
+        String sql = "select student_id, student_name, student_account, student_major, student_graduate, student_bus, student_domitory, student_ethaddr from student where student_id=?";
         Student student = new Student();
 
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, input_id);
             ResultSet rs = pstmt.executeQuery();
-
             rs.next();
             student.setStudent_id(rs.getString("student_id"));
             student.setStudent_name(rs.getString("student_name"));
@@ -136,7 +135,8 @@ public class StudentBean {
             student.setStudent_graduate(rs.getString("student_graduate"));
             student.setStudent_bus(rs.getString("student_bus"));
             student.setStudent_domitory(rs.getString("student_domitory"));
-            student.setStudent_pw(rs.getString("student_pw"));
+            student.setStudent_ethaddr(rs.getString("student_ethaddr"));
+            System.out.println("정상적으로 다운로드했습니다");
             rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
