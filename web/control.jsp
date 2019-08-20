@@ -5,6 +5,7 @@
   Time: 오후 3:20
   To change this template use File | Settings | File Templates.
 --%>
+<%-- 전반적인 JSP파일들을 컨트롤 해주는 역활을 하며 다양한 액션파라미터 각각의 동작유형에 대해서 구현--%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"   import="student.*, java.util.* ,java.sql.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -37,7 +38,8 @@
         else
             throw new Exception("DB 갱신오류");
     }
-    // 주소록 삭제 요청인 경우
+    // 개인정보 삭제 요청인 경우
+    //아래코드는 아직 구현이 되지 않음 필요성에 대해서 좀 더 생각 후 수정 예정
     else if(action.equals("delete")) {
 
         if(ab.deleteDB(student.getStudent_id())) {
@@ -46,12 +48,15 @@
         else
             throw new Exception("DB 삭제 오류");
     }
+    //Main문으로의 전환을 하는 경우
     else if(action.equals("main")){
         pageContext.forward("main.jsp");
     }
+    //login 페이지로 전환을 하는 경우
     else if(action.equals("login")){
         pageContext.forward("login.jsp");
     }
+    //액션파라미터 값의 오류가 있을경우 호출
     else {
         out.println("<script>alert('action 파라미터를 확인해 주세요!!!')</script>");
     }

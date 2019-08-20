@@ -2,6 +2,7 @@ package student;
 
 public class Student {
     //멤버 변수 선언
+    //자바 빈즈 파일로서 Student라는 클래스의 GETTER, SETTER함수를 정의헤놓은 코드
     private String student_id;
     private String student_name;
     private String student_account;

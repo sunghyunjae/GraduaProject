@@ -4,16 +4,20 @@ import java.sql.*;
 import java.util.*;
 import java.io.*;
 
+//자바빈즈
+//Student 클래스의 데이터 입력, 수정 삭제, JDBC 연동과 관련된 소스코드가 작성되어 있음
 public class StudentBean {
+    //JDBC 연동과 관련해서 필요한 인스턴시 초기화
     Connection conn = null;
     PreparedStatement pstmt = null;
 
-    String jdbc_driver = "com.mysql.jdbc.Driver";
+    String jdbc_driver = "com.mysql.jdbc.Driver"; // JDBC 드라이버 주소
     String server = "localhost"; // MySQL 서버 주소
     String database = "student"; // MySQL DATABASE 이름
     String user_name = "root"; //  MySQL 서버 아이디
     String password = "1897121"; // MySQL 서버 비밀번호
 
+    //JDBC를 통해 MySQL을 연결하는 함수
     void connect() {
         try {
             Class.forName(jdbc_driver);
@@ -29,7 +33,7 @@ public class StudentBean {
             e.printStackTrace();
         }
     }
-
+    //MySql과의 연결을 끊는 함수
     void disconnect() {
         if (pstmt != null) {
             try {
@@ -116,7 +120,7 @@ public class StudentBean {
         }
         return true;
     }
-
+    /*  학생의 정보를 가져오는 함수로서 자바빈즈로서 구현 후 JSP에서 호출을 할 경우 에러, 오류가 많이 발생해서 JSP에서 직접 구현하는 것으로 변경함
     public Student getDB(String input_id) {
         connect();
 
@@ -144,7 +148,7 @@ public class StudentBean {
             disconnect();
         }
         return student;
-    }
+    }*/
 
 
 }
