@@ -58,7 +58,7 @@
                 session.setAttribute("id", user_id);
                 session.setAttribute("pw", user_pw);
                 // 첫 페이지로 돌려보낸다
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("main.jsp");
                 try {
                     if(conn != null)
                         conn.close();

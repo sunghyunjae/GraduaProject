@@ -19,7 +19,7 @@
 <body>
 <div align=center>
     <h1> 학생 등록 </h1>
-    <form name=form1 action="control.jsp" method="post" onsubmit="return input_check_func()">
+    <form name=form1 action="control.jsp" method="post" onsubmit="return input_check_func()" >
         <input type=hidden name="action" value="insert">
         <table border="1">
             <tr>

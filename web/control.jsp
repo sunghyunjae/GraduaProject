@@ -46,7 +46,7 @@
             pageContext.forward("changeinfo.jsp");
         }
     }*/
-    // 주소록 수정 등록 요청인 경우
+    // 개인정보 수정 요청인 경우
     else if(action.equals("update")) {
         if(ab.updateDB(student)) {
             response.sendRedirect("control.jsp?action=list");

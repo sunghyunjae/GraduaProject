@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-
+해당금액만큼 결제하시오
 </body>
 </html>
