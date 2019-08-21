@@ -8,9 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>기숙사 출입</title>
 </head>
 <body>
-기숙사 출입이요
+<div style="border:1px solid; padding:1px;">
+    <img src="http://localhost:8080/wallet/metamaskwallet.PNG">
+</div>
+<div>
+    위의 QR 코드를 읽혀주세요
+    <br><button onclick="location.href='main.jsp'"> 메인화면으로 이동</button>
+</div>
 </body>
 </html>
