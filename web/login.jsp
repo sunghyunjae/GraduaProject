@@ -38,13 +38,16 @@
        else if(session.getAttribute("id").equals("admin")){
            out.print("관리자 모드로 접속하셨습니다.");
     %>
-    <h1> 로그인 페이지 </h1>
+    <h1> 로그인 페이지(관리자) </h1>
     <br /> <form action="logout.jsp" method="post">
     <br />
     <br /> <button> 로그아웃 </button>
     <br />
     <br /> </form>
     <br /> <button onClick="location.href='register.jsp'"> 학생 등록</button>
+    <br>
+    <br />
+    <br /><button onclick="location.href='delete.jsp'"> 학생 삭제</button>
     <br>
     <br />
     <br /><button onclick="location.href='main.jsp'"> 메인화면으로 이동</button>

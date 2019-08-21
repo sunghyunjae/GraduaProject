@@ -20,10 +20,10 @@
     // 파라미터에 따른 요청 처리
 
     // 학생 등록 요청인 경우
-     else if(action.equals("insert")) {
-
+     if(action.equals("insert")) {
         if(ab.insertDB(student)) {
             System.out.println(student.getStudent_name());
+            out.println("<script>alert('등록되었습니다!!!')</script>");
             response.sendRedirect("control.jsp?action=login");
         }
         else
@@ -33,6 +33,7 @@
     // 개인정보 수정 요청인 경우
     else if(action.equals("update")) {
         if(ab.updateDB(student)) {
+            out.println("<script>alert('수정되었습니다!!!')</script>");
             response.sendRedirect("control.jsp?action=login");
         }
         else
@@ -41,9 +42,9 @@
     // 개인정보 삭제 요청인 경우
     //아래코드는 아직 구현이 되지 않음 필요성에 대해서 좀 더 생각 후 수정 예정
     else if(action.equals("delete")) {
-
         if(ab.deleteDB(student.getStudent_id())) {
-            response.sendRedirect("control.jsp?action=list");
+            out.println("<script>alert('삭제되었습니다!!!')</script>");
+            response.sendRedirect("control.jsp?action=login");
         }
         else
             throw new Exception("DB 삭제 오류");

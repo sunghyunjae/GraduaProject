@@ -62,8 +62,8 @@
             //관리자 계정일 경우 트랜잭션 생성을 위한 페이지 버튼을 보여준다.
         }else if(session.getAttribute("id").equals("admin")){
         %>
-        <button id="loginBtn" class="btn btn-primary" onclick="changeView(7)">개인정보변경</button>
-        <button class="btn btn-primary" onclick="changeView(3)">버스결제</button>
+        <button id="loginBtn" class="btn btn-primary" onclick="changeView(7)">마이페이지</button>
+        <button class="btn btn-primary" onclick="changeView(3)">통학버스</button>
         <button class="btn btn-primary" onclick="changeView(4)">기숙사출입</button>
         <button class="btn btn-primary" onclick="changeView(5)">도서관출입</button>
         <button class="btn btn-primary" onclick="changeView(6)">대금결제</button>
