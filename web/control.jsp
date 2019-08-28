@@ -19,8 +19,21 @@
     String action = request.getParameter("action");
     // 파라미터에 따른 요청 처리
 
+    //도서관 출입 로그 요청인 경우
+    if(action.equals("libraryList")){
+        ArrayList<Student> datas = ab.getLibraryList();
+        request.setAttribute("datas", datas);
+        pageContext.forward("adminlibrary.jsp");
+    }
+
+    //기숙사 출입 로그 요청인 경우
+    else if(action.equals("domitoryList")){
+        ArrayList<Student> datas = ab.getDomitoryList();
+        request.setAttribute("datas", datas);
+        pageContext.forward("admindomitory.jsp");
+    }
     // 학생 등록 요청인 경우
-     if(action.equals("insert")) {
+     else if(action.equals("insert")) {
         if(ab.insertDB(student)) {
             System.out.println(student.getStudent_name());
             out.println("<script>alert('등록되었습니다!!!')</script>");

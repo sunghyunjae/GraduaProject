@@ -31,7 +31,7 @@
             }
             else if(value == "4") // admindomitory 버튼 클릭시 admindomitory 화면으로 이동
             {
-                location.href="admindomitory.jsp";
+                location.href="admindomitory.jsp"
             }
             else if(value == "5") // adminlibrary 버튼 클릭시 adminlibrary 화면으로 이동
             {
