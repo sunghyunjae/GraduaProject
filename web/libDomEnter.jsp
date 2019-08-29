@@ -1,10 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: tjddb
-  Date: 2019-08-12
-  Time: 오후 5:52
+  Date: 2019-08-29
+  Time: 오후 3:55
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.util.*, student.*" %>
 <html>
 <head>
@@ -38,35 +39,31 @@
             vertical-align: middle;
         }
     </style>
+
 </head>
 <jsp:useBean id="datas" scope="request" class="java.util.ArrayList" />
+
 <body>
 <div id="wrap">
-<div id="header">
+    <div id="header">
             <jsp:include page="menu.jsp" />
         </div>
-    <div id="main">
-
-<form>
-    <META HTTP-EQUIV="refresh" CONTENT="5">
-    <table border="1">
-        <tr><th>학번</th><th>이 름</th><th>학과</th><th>기숙사 들어간 시간</th><th>기숙사 나온 시간</th></tr>
-        <%
-            for(Student ab : (ArrayList<Student>)datas) {
-        %>
-        <tr>
-            <td><%=ab.getStudent_id() %></td>
-            <td><%=ab.getStudent_name() %></td>
-            <td><%=ab.getStudent_major() %></td>
-            <td><%=ab.getDomitoryInputTime() %></td>
-            <td><%=ab.getDomitoryOutputTime() %></td>
-        </tr>
-        <%
-            }
-        %>
-    </table>
-</form>
-</div>
+    <div id = "main">
+        <p>
+            <%
+                // 로그인 안되었을 경우 - 로그인, 회원가입 버튼을 보여준다.
+                if(session.getAttribute("id")==null){
+            %>
+            <button id="loginBtn" class="btn btn-primary" onclick="changeView(4)">로그인</button>
+            <%
+            } else{   %>
+            <button>[<a href=control.jsp?action=enterDomitory>기숙사 입실</a>]</button>
+            <button>[<a href=control.jsp?action=quitDomitory>기숙사 퇴실</a>]</button>
+            <button>[<a href=control.jsp?action=enterLibrary>도서관 입실</a>]</button>
+            <button>[<a href=control.jsp?action=quitLibrary>도서관 퇴실</a>]</button>
+            <% } %>
+        </p>
+    </div>
 </div>
 </body>
 </html>

@@ -23,7 +23,7 @@
             }
             else if(value == "2") // eth주소 버튼 클릭시 이더주소 화면으로 이동
             {
-                location.href="ethaddress.jsp";
+                location.href="libDomEnter.jsp";
             }
             else if(value == "3") // adminbus 버튼 클릭시 adminbus 화면으로 이동
             {
@@ -31,7 +31,7 @@
             }
             else if(value == "4") // admindomitory 버튼 클릭시 admindomitory 화면으로 이동
             {
-                location.href="admindomitory.jsp"
+                location.href="admindomitory.jsp";
             }
             else if(value == "5") // adminlibrary 버튼 클릭시 adminlibrary 화면으로 이동
             {
@@ -64,14 +64,14 @@
         %>
         <button id="loginBtn" class="btn btn-primary" onclick="changeView(7)">마이페이지</button>
         <button class="btn btn-primary" onclick="changeView(3)">통학버스</button>
-        <button class="btn btn-primary" onclick="changeView(4)">기숙사출입</button>
-        <button class="btn btn-primary" onclick="changeView(5)">도서관출입</button>
+        <button>[<a href=control.jsp?action=domitoryList>기숙사출입목록</a>]</button>
+        <button>[<a href=control.jsp?action=libraryList>도서관출입목록</a>]</button>
         <button class="btn btn-primary" onclick="changeView(6)">대금결제</button>
         <%   // 로그인 되었을 경우 - 로그아웃, 내정보 버튼을 보여준다.
             } else{   %>
-        <button id="loginBtn" class="btn btn-primary" onclick="changeView(7)">개인정보변경</button>
+        <button id="loginBtn" class="btn btn-primary" onclick="changeView(7)">마이페이지</button>
         <button class="btn btn-primary" onclick="changeView(1)">결제</button>
-        <button class="btn btn-primary" onclick="changeView(2)">이더리움 주소보기</button>
+        <button class="btn btn-primary" onclick="changeView(2)">기숙사,도서관 출입</button>
         <% } %>
     </p>
 </div>

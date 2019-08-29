@@ -53,7 +53,6 @@
             throw new Exception("DB 갱신오류");
     }
     // 개인정보 삭제 요청인 경우
-    //아래코드는 아직 구현이 되지 않음 필요성에 대해서 좀 더 생각 후 수정 예정
     else if(action.equals("delete")) {
         if(ab.deleteDB(student.getStudent_id())) {
             out.println("<script>alert('삭제되었습니다!!!')</script>");
@@ -70,6 +69,35 @@
     else if(action.equals("login")){
         pageContext.forward("login.jsp");
     }
+    else if(action.equals("enterDomitory")) {
+        String stid = (String)session.getAttribute("id");
+        student.setStudent_id(stid);
+        if (ab.updateEnterDomitory(student)) {
+            out.println("<script>alert('기숙사 입실 확인되었습니다.');history.go(-1);</script>");
+        }
+    }
+    else if(action.equals("quitDomitory")) {
+        String stid = (String)session.getAttribute("id");
+        student.setStudent_id(stid);
+        if (ab.updateQuitDomitory(student)) {
+            out.println("<script>alert('기숙사 퇴실 확인되었습니다.');history.go(-1);</script>");
+        }
+    }
+    else if(action.equals("enterLibrary")) {
+        String stid = (String)session.getAttribute("id");
+        student.setStudent_id(stid);
+        if (ab.updateEnterLibrary(student)) {
+            out.println("<script>alert('도서관 입실 확인되었습니다.');history.go(-1);</script>");
+        }
+    }
+    else if(action.equals("quitLibrary")) {
+        String stid = (String)session.getAttribute("id");
+        student.setStudent_id(stid);
+        if (ab.updateQuitLibrary(student)) {
+            out.println("<script>alert('도서관 퇴실 확인되었습니다.');history.go(-1);</script>");
+        }
+    }
+
     //액션파라미터 값의 오류가 있을경우 호출
     else {
         out.println("<script>alert('action 파라미터를 확인해 주세요!!!')</script>");
