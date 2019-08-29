@@ -14,8 +14,8 @@ public class Student {
     private String student_pw;
     private String libraryInputTime;
     private String libraryOutputTime;
-    private String domitroyInputTime;
-    private String domitroyOuputTime;
+    private String domitoryInputTime;
+    private String domitoryOutputTime;
 
     public String getStudent_id(){
         return student_id;
@@ -74,10 +74,10 @@ public class Student {
     public void setLibraryInputTime(String libraryInputTime){this.libraryInputTime = libraryInputTime;}
     public String getLibraryOutputTime(){return libraryOutputTime;}
     public void setLibraryOutputTime(String libraryOutputTime){this.libraryOutputTime = libraryOutputTime;}
-    public String getDomitroyInputTime(){return domitroyInputTime;}
-    public void setDomitroyInputTime(String domitroyInputTime){this.domitroyInputTime = domitroyInputTime;}
-    public String getDomitroyOuputTime(){return domitroyOuputTime;}
-    public void setDomitroyOuputTime(String domitroyOuputTime){this.domitroyOuputTime = domitroyOuputTime;}
+    public String getDomitoryInputTime(){return domitoryInputTime;}
+    public void setDomitoryInputTime(String domitoryInputTime){this.domitoryInputTime = domitoryInputTime;}
+    public String getDomitoryOutputTime(){return domitoryOutputTime;}
+    public void setDomitoryOutputTime(String domitoryOuputTime){this.domitoryOutputTime = domitoryOuputTime;}
 
 
 

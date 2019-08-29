@@ -3,6 +3,7 @@ package student;
 import java.sql.*;
 import java.util.*;
 import java.io.*;
+import java.util.Date;
 
 //자바빈즈
 //Student 클래스의 데이터 입력, 수정 삭제, JDBC 연동과 관련된 소스코드가 작성되어 있음
@@ -123,7 +124,7 @@ public class StudentBean {
     public ArrayList<Student> getLibraryList() {
         connect();
         ArrayList<Student> datas = new ArrayList<Student>();
-        String sql = "select student_id, student_name, student_major, libraryInputTime, libraryOutputTime from student where libraryCheck = '1' AND student_graduate = '0'";
+        String sql = "select student_id, student_name, student_major, libraryInputTime, libraryOutputTime from student where student_graduate = '0'";
         try {
             pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
@@ -151,7 +152,7 @@ public class StudentBean {
     public ArrayList<Student> getDomitoryList() {
         connect();
         ArrayList<Student> datas = new ArrayList<Student>();
-        String sql = "select student_id, student_name, student_major, domitoryInputTime, domitoryOutputTime from student where domitoryCheck = '1' AND student_graduate = '0'";
+        String sql = "select student_id, student_name, student_major, domitoryInputTime, domitoryOutputTime from student where student_domitory ='1' and student_graduate = '0'";
         try {
             pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
@@ -161,8 +162,8 @@ public class StudentBean {
                 student.setStudent_id(rs.getString("student_id"));
                 student.setStudent_name(rs.getString("student_name"));
                 student.setStudent_major(rs.getString("student_major"));
-                student.setDomitroyInputTime(rs.getString("domitoryInputTime"));
-                student.setDomitroyOuputTime(rs.getString("domitoryOutputTime"));
+                student.setDomitoryInputTime(rs.getString("domitoryInputTime"));
+                student.setDomitoryOutputTime(rs.getString("domitoryOutputTime"));
                 datas.add(student);
             }
             rs.close();
@@ -174,6 +175,82 @@ public class StudentBean {
             disconnect();
         }
         return datas;
+    }
+    public boolean updateEnterLibrary(Student student) {
+        connect();
+        String sql = "update student set libraryCheck=?, libraryInputTime =now() WHERE student_id=?";
+        System.out.println(student.getStudent_id());
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,1);
+            pstmt.setString(2, student.getStudent_id());
+            pstmt.executeUpdate();
+            System.out.println("DB수정 완료.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("DB수정 실패.");
+            return false;
+        } finally {
+            disconnect();
+        }
+        return true;
+    }
+    public boolean updateQuitLibrary(Student student) {
+        connect();
+        String sql = "update student set libraryCheck=?, libraryOutPutTime =now() WHERE student_id=?";
+        System.out.println(student.getStudent_id());
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,0);
+            pstmt.setString(2, student.getStudent_id());
+            pstmt.executeUpdate();
+            System.out.println("DB수정 완료.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("DB수정 실패.");
+            return false;
+        } finally {
+            disconnect();
+        }
+        return true;
+    }
+    public boolean updateEnterDomitory(Student student) {
+        connect();
+        String sql = "update student set domitoryCheck=?, domitoryInputTime =now() WHERE student_id=?";
+        System.out.println(student.getStudent_id());
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,1);
+            pstmt.setString(2, student.getStudent_id());
+            pstmt.executeUpdate();
+            System.out.println("DB수정 완료.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("DB수정 실패.");
+            return false;
+        } finally {
+            disconnect();
+        }
+        return true;
+    }
+    public boolean updateQuitDomitory(Student student) {
+        connect();
+        String sql = "update student set domitoryCheck=?, domitoryOutputTime =now() WHERE student_id=?";
+        System.out.println(student.getStudent_id());
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,0);
+            pstmt.setString(2, student.getStudent_id());
+            pstmt.executeUpdate();
+            System.out.println("DB수정 완료.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("DB수정 실패.");
+            return false;
+        } finally {
+            disconnect();
+        }
+        return true;
     }
     /*  학생의 정보를 가져오는 함수로서 자바빈즈로서 구현 후 JSP에서 호출을 할 경우 에러, 오류가 많이 발생해서 JSP에서 직접 구현하는 것으로 변경함
     public Student getDB(String input_id) {
