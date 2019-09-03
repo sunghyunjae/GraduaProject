@@ -19,7 +19,7 @@
             }
             else if(value == "1") // pay 버튼 클릭시 pay 화면으로 이동
             {
-                location.href="pay.jsp";
+                 location.href="trust://";
             }
             else if(value == "2") // eth주소 버튼 클릭시 이더주소 화면으로 이동
             {
@@ -45,6 +45,10 @@
             {
                 location.href="login.jsp";
             }
+            else if(value == "8") // MSC 코인의 트랜잭션 조회
+            {
+                location.href="transactionlist.jsp";
+            }
         }
     </script>
 
@@ -67,6 +71,7 @@
         <button>[<a href=control.jsp?action=domitoryList>기숙사출입목록</a>]</button>
         <button>[<a href=control.jsp?action=libraryList>도서관출입목록</a>]</button>
         <button class="btn btn-primary" onclick="changeView(6)">대금결제</button>
+        <button class="btn btn-primary" onclick="changeView(8)">트랜잭션 조회</button>
         <%   // 로그인 되었을 경우 - 로그아웃, 내정보 버튼을 보여준다.
             } else{   %>
         <button id="loginBtn" class="btn btn-primary" onclick="changeView(7)">마이페이지</button>
