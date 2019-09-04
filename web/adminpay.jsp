@@ -5,15 +5,15 @@
   Time: 오후 5:49
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" errorPage="error.jsp" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>학생식당</title>
 </head>
 <body>
 
 <div style="border:1px solid; padding:1px;">
-    <img src="http://localhost:8080/wallet/metamaskwallet.PNG">
+    <img src="http://localhost:8080/wallet/cafeteria.png">
 </div>
 <div>
     위의 QR 코드를 읽혀주세요

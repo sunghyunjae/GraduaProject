@@ -5,7 +5,7 @@
   Time: 오후 6:15
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8" errorPage="error.jsp"
          pageEncoding="utf-8"  import= "student.*, java.sql.* , java.util.*" %>
 <%
     request.setCharacterEncoding("UTF-8");

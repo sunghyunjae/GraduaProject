@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%-- 전반적인 JSP파일들을 컨트롤 해주는 역활을 하며 다양한 액션파라미터 각각의 동작유형에 대해서 구현--%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8" errorPage="error.jsp"
          pageEncoding="utf-8"   import="student.*, java.util.* ,java.sql.*"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <% request.setCharacterEncoding("UTF-8"); %>

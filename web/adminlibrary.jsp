@@ -8,7 +8,7 @@
 <%-- 실질적으로 학생증 역활을 하는 부분으로서 학생들의 개인정보들을 출력해주는 페이지이다.
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="java.util.*, student.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" errorPage="error.jsp" import="java.util.*, student.*" %>
 <html>
 <head>
     <title>도서관 출입</title>

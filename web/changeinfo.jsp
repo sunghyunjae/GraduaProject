@@ -5,7 +5,7 @@
   Time: 오후 5:51
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" import ="java.sql.*, student.* "%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" errorPage="error.jsp" import ="java.sql.*, student.* "%>
 <html>
 <head>
     <title> 개인정보변경 </title>

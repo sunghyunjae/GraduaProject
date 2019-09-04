@@ -15,7 +15,7 @@
 </head>
 <body>
 <div style="border:1px solid; padding:1px;">
-    <img src="http://localhost:8080/wallet/metamaskwallet.PNG">
+    <img src="http://localhost:8080/wallet/bus.png">
 </div>
 <div>
     위의 QR 코드를 읽혀주세요

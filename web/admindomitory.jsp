@@ -5,7 +5,7 @@
   Time: 오후 5:52
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="java.util.*, student.*" %>
+<%@ page contentType="text/html;charset=UTF-8" errorPage="error.jsp" language="java" import="java.util.*, student.*" %>
 <html>
 <head>
     <title>기숙사 출입</title>

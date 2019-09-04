@@ -5,7 +5,7 @@
   Time: 오전 11:39
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" errorPage="error.jsp"  language="java" %>
 <html>
 <head>
     <title>메뉴 바</title>
