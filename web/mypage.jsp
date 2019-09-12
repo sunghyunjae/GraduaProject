@@ -1,16 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: tjddb
-  Date: 2019-08-12
-  Time: 오후 5:48
+  Date: 2019-07-29
+  Time: 오전 10:52
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=utf-8" errorPage="error.jsp"
-         pageEncoding="utf-8"  errorPage="error.jsp" import="student.*, java.util.*"%>
-<%
-    request.setCharacterEncoding("UTF-8");
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- pageContext.forward("login.jsp"); --%>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -104,7 +101,7 @@
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Mypage</span>
             </a>
-            <a class="nav-link collapsed" href="pay.jsp" >
+            <a class="nav-link collapsed" href=trust://"  >
                 <i class="fas fa-fw fa-folder"></i>
                 <span>결제</span>
             </a>
@@ -114,6 +111,7 @@
             </a>
             <% } %>
         </li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -203,71 +201,56 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid" align=center>
-                <h1> 학생 등록 </h1>
-                <form name=form1 action="control.jsp" method="post" onsubmit="return input_check_func()" >
-                    <input type=hidden name="action" value="insert">
-                    <table class="table table-bordered" id="dataTable" cellspacing="0" style="text-align: center;">
-
-                        <tr>
-                            <th> id </th> <td> <input id = "student_id" name="student_id"> </td>
-                        </tr>
-                        <tr>
-                            <th> 이름 </th> <td> <input id = "student_name" name="student_name"> </td>
-                        </tr>
-                        <tr>
-                            <th> 계좌 </th> <td> <input id = "student_account" name="student_account"> </td>
-                        </tr>
-                        <tr>
-                            <th> 전공 </th> <td> <input id = "student_major" name="student_major"> </td>
-                        </tr>
-                        <tr>
-                            <th> 졸업여부 </th> <td> <input id = "student_graduate" name="student_graduate"> </td>
-                        </tr>
-                        <tr>
-                            <th> 통학버스신청여부 </th> <td> <input id ="student_bus" name="student_bus"> </td>
-                        </tr>
-                        <tr>
-                            <th> 기숙사신청여부 </th> <td> <input id ="student_domitory" name="student_domitory"> </td>
-                        </tr>
-                        <tr>
-                            <th> 이더리움주소 </th> <td> <input id = "student_ethaddr" name="student_ethaddr"> </td>
-                        </tr>
-                        <tr>
-                            <th> 비밀번호 </th> <td> <input id = "student_pw" name="student_pw"> </td>
-                        </tr>
-
-                    </table>
-                    <button type=submit class="btn btn-primary btn-user ">
-                        등록
-                    </button>
-                </form>
-
-                <script>
-                    // input_check_func는 회원가입에 필요한 4가지 문항을 전부다 채워 넣었는지 check 해준다
-                    // 이는 form onsubmit에 의해 발동되며 return 값이 false 일 경우 페이지의 데이터가 action= 좌표로 넘어가지 않게된다
-                    function input_check_func() {
-                        var id = document.getElementById('student_id').value;
-                        var pw = document.getElementById('student_pw').value;
-                        var name = document.getElementById('student_name').value;
-                        var major = document.getElementById('student_major').value;
-                        var account = document.getElementById('student_account').value;
-                        var graduate = document.getElementById('student_graduate').value;
-                        var bus = document.getElementById('student_bus').value;
-                        var domitory = document.getElementById('student_domitory').value;
-                        var ethaddr = document.getElementById('student_ethaddr').value;
-
-                        if(id == null || pw == null || name == null || major == null || account == null || graduate == null || bus == null || domitory == null || ethaddr == null ||
-                            id == ""   || pw == ""   || name == "" || major == "" || account =="" || graduate == "" || bus =="" || domitory =="" || ethaddr == "") {
-
-                            alert("공백은 허용치 않는다");
-                            return false;
-                        } else {
-                            // 모든조건이 충족되면 true를 반환한다 이는 현재 페이지의 정보를 action= 좌표로 넘긴다는것을 의미
-                            return true;
-                        }
+            <div class="container-fluid">
+                <%
+                    // 현재 로그인된 아이디가 없다면 (= session에 저장된 id가 없다면)
+                    if(session.getAttribute("id") == null) {
+                %>
+                <script> alert("로그인 먼저 해주세요"); window.location = 'login.jsp';</script>
+                <%
                     }
-                </script>
+                    else if(session.getAttribute("id").equals("admin")){
+                %>
+                <center>
+                    <br /> <h1> 관리자 페이지</h1>
+                <br /> <form action="logout.jsp" method="post">
+                <br />
+                <br /> <button class="btn-primary "> 로그아웃 </button>
+                <br />
+                <br /> </form>
+                <br /> <button class="btn-primary " onClick="location.href='register.jsp'"> 학생 등록</button>
+                <br>
+                <br />
+                <br /><button class="btn-primary " onclick="location.href='delete.jsp'"> 학생 삭제</button>
+                <br>
+                <br />
+                <br /><button class="btn-primary "  onclick="location.href='main.jsp'"> 메인화면으로 이동</button>
+                </center>
+                <%
+                    }
+                    // 현재 로그인된 아이디가 있다면 (= session에 저장된 id가 있다면)
+                    else  {
+                %>
+                <center>
+                <h1> 로그인 페이지 </h1>
+                <h3>
+                <%
+                    out.print(session.getAttribute("id") + " 님 환영합니다");
+                %>
+                </h3>
+                <br /> <form action="logout.jsp" method="post">
+                <br />
+                <br /> <button class="btn-primary "> 로그아웃 </button>
+                <br />
+                <br /> </form>
+                <br /> <button class="btn-primary " onClick="location.href='changeinfo.jsp'"> 개인정보 변경</button>
+                <br>
+                <br />
+                <br /><button class="btn-primary " onclick="location.href='main.jsp'"> 메인화면으로 이동</button>
+                </center>
+                <%
+                    }
+                %>
 
             </div>
             <!-- /.container-fluid -->
@@ -326,3 +309,5 @@
 </body>
 
 </html>
+
+
